@@ -4,11 +4,6 @@ A complete, hands-on course for fine-tuning Large Language Models — from the
 theory you need in an interview, to runnable code, to **deploying** your
 fine-tuned model in three different ways.
 
-Inspired by and expanding on
-[krishnaik06/Finetuning-LLM](https://github.com/krishnaik06/Finetuning-LLM),
-this repo turns scattered notebooks into a structured learning path with
-documented concepts, production-ready scripts, and deployment guides.
-
 > Repo: [Aeontanvir/finetuning-llm](https://github.com/Aeontanvir/finetuning-llm)
 
 ---
