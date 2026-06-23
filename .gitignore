@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Model artifacts & data
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+checkpoints/
+outputs/
+runs/
+wandb/
+results/
+merged_model/
+adapter/
+*.log
+
+# Datasets (keep small samples, ignore large dumps)
+data/*.json
+data/*.jsonl
+data/*.csv
+!data/sample_*.jsonl
+
+# Secrets
+.env
+*.key
+hf_token.txt
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
