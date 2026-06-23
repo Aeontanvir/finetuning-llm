@@ -9,6 +9,8 @@ Inspired by and expanding on
 this repo turns scattered notebooks into a structured learning path with
 documented concepts, production-ready scripts, and deployment guides.
 
+> Repo: [Aeontanvir/finetuning-llm](https://github.com/Aeontanvir/finetuning-llm)
+
 ---
 
 ## Who this is for
@@ -71,8 +73,8 @@ Reusable, configurable Python instead of notebook cells:
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/<your-username>/finetuning-llm-mastery.git
-cd finetuning-llm-mastery
+git clone https://github.com/Aeontanvir/finetuning-llm.git
+cd finetuning-llm
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
