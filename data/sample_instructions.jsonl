@@ -1,0 +1,8 @@
+{"instruction": "Explain what LoRA is in one sentence.", "input": "", "output": "LoRA (Low-Rank Adaptation) is a parameter-efficient fine-tuning method that freezes the base model and trains small low-rank matrices, drastically reducing the number of trainable parameters."}
+{"instruction": "Convert this sentence to a polite request.", "input": "Send me the report.", "output": "Could you please send me the report when you have a moment? Thank you!"}
+{"instruction": "Classify the sentiment as Positive, Negative, or Neutral.", "input": "The product arrived late but works perfectly.", "output": "Neutral"}
+{"instruction": "Summarize the text in one line.", "input": "Fine-tuning adapts a pre-trained model to a specific task by continuing training on a smaller, curated dataset.", "output": "Fine-tuning specializes a pre-trained model on a smaller task-specific dataset."}
+{"instruction": "Write a SQL query to count users by country.", "input": "Table: users(id, name, country)", "output": "SELECT country, COUNT(*) AS user_count FROM users GROUP BY country;"}
+{"instruction": "Translate to French.", "input": "Good morning, how are you?", "output": "Bonjour, comment allez-vous ?"}
+{"instruction": "Give a one-line definition.", "input": "QLoRA", "output": "QLoRA is LoRA applied on top of a 4-bit quantized, frozen base model to cut memory use while keeping quality."}
+{"instruction": "Fix the grammar.", "input": "He go to school everyday.", "output": "He goes to school every day."}
