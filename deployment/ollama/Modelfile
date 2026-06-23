@@ -1,0 +1,23 @@
+# Ollama Modelfile for a fine-tuned model converted to GGUF.
+# Build with:  ollama create my-llm -f Modelfile
+# Run with:    ollama run my-llm
+
+# Point this at your quantized GGUF file (see README for conversion).
+FROM ./model-q4_k_m.gguf
+
+# Sampling defaults.
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER stop "### Instruction:"
+PARAMETER stop "</s>"
+
+# Prompt template — must match how you trained (Alpaca style here).
+TEMPLATE """Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{{ .Prompt }}
+
+### Response:
+"""
+
+SYSTEM """You are a helpful assistant fine-tuned for this task."""
