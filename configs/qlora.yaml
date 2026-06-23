@@ -1,0 +1,44 @@
+# Configuration for QLoRA fine-tuning (4-bit base model).
+# Requires a CUDA GPU (bitsandbytes). Great for Colab T4.
+
+model:
+  base_model: "mistralai/Mistral-7B-v0.1"
+  trust_remote_code: false
+
+data:
+  train_file: "data/sample_instructions.jsonl"
+  format: "alpaca"
+  max_seq_length: 1024
+  val_split: 0.1
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  # Mistral/Llama attention + MLP projections for more capacity.
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+training:
+  output_dir: "results/qlora-adapter"
+  num_train_epochs: 1
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  logging_steps: 5
+  eval_strategy: "steps"
+  eval_steps: 20
+  save_strategy: "epoch"
+  bf16: true
+  fp16: false
+  optim: "paged_adamw_8bit"   # paged optimizer prevents OOM spikes
+  gradient_checkpointing: true
+  report_to: "tensorboard"
+
+quantization:
+  load_in_4bit: true
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+  bnb_4bit_compute_dtype: "bfloat16"

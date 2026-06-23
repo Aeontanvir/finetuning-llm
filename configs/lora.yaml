@@ -1,0 +1,41 @@
+# Configuration for LoRA fine-tuning (16-bit base model).
+# Edit values here instead of touching the training code.
+
+model:
+  # A small model so the example runs on modest hardware. Swap for e.g.
+  # "mistralai/Mistral-7B-v0.1" or "meta-llama/Llama-2-7b-hf" on a GPU.
+  base_model: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+  trust_remote_code: false
+
+data:
+  train_file: "data/sample_instructions.jsonl"
+  format: "alpaca"          # "alpaca" or "chat"
+  max_seq_length: 512
+  val_split: 0.1
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+training:
+  output_dir: "results/lora-adapter"
+  num_train_epochs: 3
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0002
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  logging_steps: 5
+  eval_strategy: "steps"
+  eval_steps: 20
+  save_strategy: "epoch"
+  bf16: true                # set false + fp16 true on older GPUs
+  fp16: false
+  optim: "adamw_torch"
+  report_to: "tensorboard"
+
+quantization:
+  load_in_4bit: false       # LoRA = full-precision base; QLoRA sets this true
